@@ -17,6 +17,7 @@ export default function App() {
       firstName: "",
       lastName: "",
     },
+    mode: "onTouched",
   });
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
@@ -46,7 +47,11 @@ export default function App() {
         <label htmlFor="lastName">lastName</label>
         <input
           {...register("lastName", {
-            pattern: { value: /^[A-Za-z]+$/i, message: "only letters" },
+            required: `this is required`,
+            pattern: {
+              value: /^[a-zA-Z-_]{3,10}$/,
+              message: "at least 3 letters, max 10 letters",
+            },
           })}
         />
         <p style={{ color: "red" }}>{errors.lastName?.message}</p>
