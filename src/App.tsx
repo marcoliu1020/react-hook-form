@@ -44,7 +44,11 @@ export default function App() {
 
       <fieldset>
         <label htmlFor="lastName">lastName</label>
-        <input {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
+        <input
+          {...register("lastName", {
+            pattern: { value: /^[A-Za-z]+$/i, message: "only letters" },
+          })}
+        />
         <p style={{ color: "red" }}>{errors.lastName?.message}</p>
       </fieldset>
 
